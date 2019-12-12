@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Add Student{% endblock %}
+
+{% block html_head %}
+  <style type="text/css">
+    .important {
+      color: #336699;
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+<form method="POST" action="/addStudent">
+    {{ form.csrf_token }}
+    {{ form.stuId.label }} {{ form.stuId(size=20) }}<br>
+    {{ form.stuFirstName.label }} {{ form.stuFirstName(size=20) }}<br>
+    {{ form.stuLastName.label }} {{ form.stuLastName(size=20) }}<br>
+    {{ form.stuGender.label }} {{ form.stuGender(size=20) }}<br>
+    {{ form.stuYearGroup.label }} {{ form.stuYearGroup(size=20) }}<br>
+    {{ form.stuFormClass.label }} {{ form.stuFormClass(size=20) }}<br>
+    {{ form.stuSenStatus.label }} {{ form.stuSenStatus(size=20) }}<br>
+    {{ form.stuBarrier.label }} {{ form.stuBarrier(size=20) }}<br>
+    {{ form.stuReadingAge.label }} {{ form.stuReadingAge(size=20) }}<br>
+    {{ form.stuFullDescription.label }} {{ form.stuFullDescription(cols="20", rows="20") }}<br>
+    <input type="submit" value="Go">
+</form>
+{% endblock %}

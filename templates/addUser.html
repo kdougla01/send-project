@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Add Users{% endblock %}
+
+{% block html_head %}
+  <style type="text/css">
+    .important {
+      color: #336699;
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+<form method="POST" action="/addMovie">
+    {{ form.csrf_token }}
+    {{ form.movieId.label }} {{ form.movieId(size=20) }}
+    {{ form.movieTitle.label }} {{ form.movieTitle(size=20) }}
+    {{ form.movieGenre.label }} {{ form.movieGenre(size=20) }}
+    {{ form.movieRating.label }} {{ form.movieRating(size=20) }}
+    {{ form.movieReleased.label }} {{ form.movieReleased(size=20) }}
+    <input type="submit" value="Go">
+</form>
+{% endblock %}

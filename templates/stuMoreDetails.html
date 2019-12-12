@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Student Details{% endblock %}
+
+{% block html_head %}
+  <style type="text/css">
+    .important {
+      color: #336699;
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+      <table class="table is-bordered">
+  		<thead>
+		<tr>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Gender</th>
+			<th>Year Group</th>
+			<th>Form Class</th>
+			<th>SEN Status</th>
+			<th>Barrier</th>
+			<th>Reading Age</th>
+			<th>Full Description</th>
+		</tr>
+		</thead>
+		<tbody>
+		{% for stu in moreInfo %}
+			<tr>
+				<td><h1> {{ stu.stuFirstName }} </h1></td>
+				<td><h2> {{ stu.stuLastName }}</h2></td>
+				<td><h2> {{ stu.stuGender }}</h2></td>
+				<td><h2> {{ stu.stuYearGroup }}</h2></td>
+				<td><h2> {{ stu.stuFormClass }}</h2></td>
+				<td><h2> {{ stu.stuSenStatus }}</h2></td>
+				<td><h2> {{ stu.stuBarrier }}</h2></td>
+				<td><h2> {{ stu.stuReadingAge }}</h2></td>
+				<td><h2> {{ stu.stuFullDescription }}</h2></td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}
