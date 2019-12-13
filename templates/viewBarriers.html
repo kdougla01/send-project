@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}View Barrier{% endblock %}
+
+{% block html_head %}
+  <style type="text/css">
+    .important {
+      color: #336699;
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+      <table class="table is-bordered">
+  		<thead>
+		<tr>
+			<th>Barrier Name</th>
+			<th>Barrier Acronym</th>
+			<th>Barrier Info</th>
+		</tr>
+		</thead>
+		<tbody>
+		{% for bar in barList %}
+			<tr>
+				<td><h1> {{ bar.barName }} </h1></td>
+				<td><h2> {{ bar.barAcro }}</h2></td>
+				<td><h2> {{ bar.barInfo }}</h2></td>
+				<td>
+					<form method="POST" action="/delete/{{bar._id}}">
+						<button class="button is-danger">Remove</button>
+					</form>
+				</td>
+				<td>
+					<form method="POST" action="/info/{{bar._id}}">
+						<button class="button is-danger">More Info</button>
+					</form>
+				</td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

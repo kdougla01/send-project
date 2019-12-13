@@ -22,6 +22,7 @@
 			<th>Barrier</th>
 			<th>Reading Age</th>
 			<th>Full Description</th>
+			<th>Edit</th>
 		</tr>
 		</thead>
 		<tbody>
@@ -36,6 +37,11 @@
 				<td><h2> {{ stu.stuBarrier }}</h2></td>
 				<td><h2> {{ stu.stuReadingAge }}</h2></td>
 				<td><h2> {{ stu.stuFullDescription }}</h2></td>
+				<td>
+					<form method="POST" action="/edit/{{stu._id}}">
+						<button class="button is-warning">Edit</button>
+					</form>
+				</td>
 			</tr>
 		{% endfor %}
 		</tbody>

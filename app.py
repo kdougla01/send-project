@@ -1,5 +1,5 @@
 from flask import Flask, render_template, redirect
-from forms import addStudentForm, searchStudentForm
+from forms import addStudentForm, searchStudentForm, addBarrierForm
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
@@ -25,14 +25,36 @@ def addStudent():
                     'stuLastName': form.stuLastName.data, 
                     'stuGender': form.stuGender.data, 
                     'stuYearGroup': form.stuYearGroup.data,
-                    'stuFormClass': form.stuFormClass.data,
+                    'stuFormClass': form.stuGender.data,
                     'stuSenStatus': form.stuSenStatus.data,
                     'stuBarrier': form.stuBarrier.data,
                     'stuReadingAge': form.stuReadingAge.data,
-                    'stuFullDescription': form.stuFullDescription.data}
+                    'stuFullDescription': form.stuFullDescription.data,
+                    }
         addToDb = mongo.db.studentList.insert(form_data)
         return redirect('/')
     return render_template('addStudent.html', form=form)
+
+
+@app.route('/addBarrier', methods=['GET','POST'])
+def addBarrier():
+    form = addBarrierForm()
+
+    if form.validate_on_submit():
+        form_data = {'_id': form.barId.data, 
+                    'barName': form.barName.data, 
+                    'barAcro': form.barAcro.data, 
+                    'barInfo': form.barInfo.data}
+        addToDb = mongo.db.barrierList.insert(form_data)
+        return redirect('/barDetails')
+    return render_template('addBarrier.html', form=form)
+
+@app.route('/barDetails')
+def barDetails():
+    barList = mongo.db.barrierList.find()
+    #return favMovies
+    return render_template('viewBarriers.html', barList=barList)
+
 '''
 @app.route('/searchMovie', methods=['GET','POST'])
 def searchMovie():

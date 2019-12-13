@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Add Barrier{% endblock %}
+
+{% block html_head %}
+  <style type="text/css">
+    .important {
+      color: #336699;
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+<form method="POST" action="/addBarrier">
+    {{ form.csrf_token }}
+    {{ form.barId.label }} {{ form.barId(size=20) }}<br>
+    {{ form.barName.label }} {{ form.barName(size=20) }}<br>
+    {{ form.barAcro.label }} {{ form.barAcro(size=20) }}<br>
+    {{ form.barInfo.label }} {{ form.barInfo(size=20) }}<br>
+    <p>{{ form.submit() }}</p>
+</form>
+{% endblock %}
